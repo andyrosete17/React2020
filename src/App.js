@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+  `;
 
 class App extends Component {
   state = {
@@ -69,16 +84,29 @@ deletePersonHanler = (personIndex) =>{
       );
 
       style.backgroundColor = 'red';
+      style [':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
+    }
+
+    const classes = [];
+
+    if (this.state.persons.length <= 2){
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1){
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>Hi react</h1>
-        <p>This is really working</p>
-        <button 
-          onClick={this.tooglePersonHadle}
-          style = {style}>Toogle Persons</button>
-          {person}
+        <p className = {classes.join(' ')} >This is really working</p>
+        <StyledButton 
+          onClick={this.tooglePersonHadle}>Toogle Persons
+        </StyledButton>
+        {person}
        
       </div>
     );
