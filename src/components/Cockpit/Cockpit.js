@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 
 const Cockpit = (props) => {
@@ -23,6 +23,11 @@ const Cockpit = (props) => {
     if (props.persons.length <= 1){
       classes.push('bold');
     }
+
+
+    useEffect( () => {
+      console.log('[Cockpit.js] useEffect');
+    });
 
     return (
         <Fragment>
