@@ -27,7 +27,10 @@ const Cockpit = (props) => {
 
     useEffect( () => {
       console.log('[Cockpit.js] useEffect');
-    });
+      setTimeout( () => {
+        alert('Data saved in cloud');
+      }, 1000);
+    }, []);
 
     return (
         <Fragment>
