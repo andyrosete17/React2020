@@ -28,7 +28,7 @@ const Cockpit = (props) => {
     useEffect( () => {
       console.log('[Cockpit.js] useEffect');
       const timer = setTimeout( () => {
-        alert('Data saved in cloud');
+        console.log('Data saved in cloud');
       }, 1000);
       return () => {
         clearTimeout(timer);

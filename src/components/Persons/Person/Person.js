@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Person.css';
 import styled from 'styled-components';
 import Aux from '../../../hoc/Auxi.js';
+import withClass from '..//../../hoc/withClass';
 
 const StyleDiv =  styled.div`
 width: 60%;
@@ -33,4 +34,4 @@ class Person extends Component  {
     }
 };
 
-export default Person;
+export default withClass(Person ) ;
