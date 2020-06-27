@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Person.css';
 import styled from 'styled-components';
-import Aux from '../../../hoc/Aux.js';
+import Aux from '../../../hoc/Auxi.js';
 
 const StyleDiv =  styled.div`
 width: 60%;
