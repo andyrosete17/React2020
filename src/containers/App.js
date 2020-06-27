@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-
+import Aux  from '../hoc/Aux';
+import withClass  from '../hoc/withClass';
 
 
 class App extends Component {
@@ -90,21 +91,20 @@ deletePersonHanler = (personIndex) =>{
     
 
     return (
-      <div className="App">
-        <button onClick= {() =>{
-          this.setState({showCockpit: false});
-        }}>Remove Cockpict</button>
-        {this.state.showCockpit ? (
-       <Cockpit
-        showPersons = {this.state.showPersons}
-        persons = {this.state.persons}
-        clicked = {this.tooglePersonHadle}
-       /> ): null}
-        {person}
-       
-      </div>
+        <Aux>
+          <button onClick= {() =>{ 
+            this.setState({showCockpit: false});
+              }}>Remove Cockpict</button>
+              {this.state.showCockpit ? (
+            <Cockpit
+              showPersons = {this.state.showPersons}
+              personsLength = {this.state.persons.length}
+              clicked = {this.tooglePersonHadle}
+            /> ): null}
+            {person}
+        </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, "App");
