@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment, useRef } from 'react';
+import React, {useEffect, Fragment, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import AuthContext from '../../context/auth-context';
 
@@ -27,8 +27,9 @@ const Cockpit = (props) => {
 
     //To use ref in functional componnets
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
     
-
+    console.log(authContext.authenticated);
     useEffect( () => {
       console.log('[Cockpit.js] useEffect');
       // const timer = setTimeout( () => {
@@ -59,15 +60,10 @@ const Cockpit = (props) => {
              ref= {toggleBtnRef}
              >Toogle Persons
             </StyledButton>
-            <AuthContext.Consumer>
-              {
-                (context) => 
-
                 <StyledButton
-                onClick = {context.login}
-                >Login</StyledButton>
-              }
-              </AuthContext.Consumer>
+                onClick = {authContext.login}
+                >Login
+                </StyledButton>
         </Fragment>
     );
 };
