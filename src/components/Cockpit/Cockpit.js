@@ -1,5 +1,6 @@
-import React, {useEffect, Fragment } from 'react';
+import React, {useEffect, Fragment, useRef } from 'react';
 import styled from 'styled-components';
+import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
     const StyledButton = styled.button`
@@ -24,14 +25,18 @@ const Cockpit = (props) => {
       classes.push('bold');
     }
 
+    //To use ref in functional componnets
+    const toggleBtnRef = useRef(null);
+    
 
     useEffect( () => {
       console.log('[Cockpit.js] useEffect');
-      const timer = setTimeout( () => {
-        console.log('Data saved in cloud');
-      }, 1000);
+      // const timer = setTimeout( () => {
+      //   console.log('Data saved in cloud');
+      // }, 1000);
+      toggleBtnRef.current.click();
       return () => {
-        clearTimeout(timer);
+        // clearTimeout(timer);
         console.log('[Cockpit.js] cleanup work in useEffect');
       }
     }, []);
@@ -48,9 +53,21 @@ const Cockpit = (props) => {
         <Fragment>
             <h1>Hi react</h1> 
             <p className = {classes.join(' ')} >This is really working</p>
-            <StyledButton alt = {props.showPersons}
-            onClick={props.clicked}>Toogle Persons
+            <StyledButton 
+             alt = {props.showPersons}
+             onClick={props.clicked}
+             ref= {toggleBtnRef}
+             >Toogle Persons
             </StyledButton>
+            <AuthContext.Consumer>
+              {
+                (context) => 
+
+                <StyledButton
+                onClick = {context.login}
+                >Login</StyledButton>
+              }
+              </AuthContext.Consumer>
         </Fragment>
     );
 };
